@@ -88,7 +88,11 @@ body {
     font-weight: 600; }
 
 .projects__title {
-  margin-bottom: 1.6rem; }
+  padding-left: 0.5rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  justify-content: space-between; }
 
 .projects__list {
   list-style: none; }
@@ -186,14 +190,26 @@ button:disabled {
   cursor: default; }
 
 #icon-delete {
-  fill: #c74746;
+  fill: #aaa;
   opacity: 0.3;
   height: 1.5rem;
   width: 1.5rem;
   transition: all 0.2s; }
   #icon-delete:hover {
     transform: scale(1.1);
-    opacity: 1; }
+    opacity: 1;
+    fill: #c74746; }
+
+#add-project-icon {
+  height: 3rem;
+  width: 3rem;
+  fill: #aaa;
+  cursor: pointer;
+  transition: all 0.2s; }
+  #add-project-icon:hover {
+    fill: #316dca; }
+  #add-project-icon:active {
+    transform: scale(1.2); }
 
 .modal {
   height: 100%;

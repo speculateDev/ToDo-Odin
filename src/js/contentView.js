@@ -5,7 +5,6 @@ import ModalView from './modalView';
 
 class ContentView extends View {
   _tasksEl;
-  _markup;
   state;
 
   constructor() {
@@ -19,15 +18,14 @@ class ContentView extends View {
     const { title } = this.state;
 
     const tasks = model.tasksFilter(title);
-    console.log(tasks);
     this._clear(this._tasksEl);
 
-    this._markup = `<h1 class="tasks__title">${
+    let markup = `<h1 class="tasks__title">${
       title.charAt(0).toUpperCase() + title.slice(1)
     }</h1>`;
-    this._markup += this._generateMarkup(tasks);
+    markup += this._generateMarkup(tasks);
 
-    this._tasksEl.insertAdjacentHTML('afterbegin', this._markup);
+    this._tasksEl.insertAdjacentHTML('afterbegin', markup);
   }
 
   _generateMarkup(tasks) {
@@ -152,7 +150,6 @@ class ContentView extends View {
       // Remove el from internal data
       const index = model.tasks.findIndex((t) => t.id === id);
       model.tasks.splice(index, 1);
-      console.log(model.tasks);
 
       // Update Markup
       this.render();
@@ -176,7 +173,7 @@ class ContentView extends View {
       submitBtn.addEventListener('click', model.addTask.bind(this, formEl));
       nameInput.addEventListener(
         'input',
-        ModalView._trackInput.bind(this, nameInput, submitBtn)
+        ModalView.trackInput.bind(this, nameInput, submitBtn)
       );
     }
 

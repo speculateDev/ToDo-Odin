@@ -1,7 +1,11 @@
 import contentView from './contentView';
+import modalView from './modalView';
 import ModalView from './modalView';
+import { projectSideView } from './sidebarView';
 
-export const tasks = [
+export let projects;
+
+export let tasks = [
   {
     id: 0,
     name: 'Practice Spring Boot',
@@ -29,7 +33,7 @@ export const tasks = [
   {
     id: 3,
     name: 'Team Meeting',
-    description: 'Discuss progress on current sprint.',
+    description: 'Discuss progress on current goal.',
     date: '2024-10-12T00:00:00',
     priority: 0,
     project: 'work',
@@ -45,11 +49,18 @@ export const tasks = [
   {
     id: 5,
     name: 'Buy whatever',
+    description: 'A miscellaneous task.',
     date: new Date().toISOString(),
     priority: 0,
     project: 'inbox',
   },
 ];
+
+export const updateProjects = () => {
+  projects = [
+    ...new Set(tasks.filter((task) => task.project !== 'inbox').map((task) => task.project)),
+  ];
+};
 
 const generateId = function () {
   for (let id = 0; id <= tasks.length + 1; id++) {
@@ -77,6 +88,10 @@ export const tasksFilter = (type) => {
     return filtered;
   }
 
+  if (type !== 'inbox') {
+    return tasks.filter((task) => task.project === type);
+  }
+
   return tasks;
 };
 
@@ -96,11 +111,12 @@ const dataRetriever = (el) => {
   };
 };
 
-export const updateData = function (index, itemEl, e) {
+export const updateData = function (id, itemEl, e) {
   e.preventDefault();
 
   const task = dataRetriever(itemEl);
-  task.id = index;
+  task.id = id;
+  const index = tasks.findIndex((task) => task.id === id);
   tasks[index] = task;
 
   contentView.render();
@@ -124,85 +140,79 @@ export const addTask = function (formEl, e) {
   if (!exist) tasks.push(task);
   if (formEl.classList.contains('modal__content')) ModalView.closeModal();
 
+  updateProjects();
   contentView.render();
 };
 
-/////////////////////////////////////////////
-/////////////////////////////////////////////
-/////////////////////////////////////////////
+export const updateTasks = (index) => {
+  tasks = tasks.filter((task) => task.project !== projects[index]);
+};
 
-export const projects = [
-  {
-    name: 'personal',
-    description: 'personal project',
+export const addProject = (nameInp, e) => {
+  e.preventDefault();
+  const name = nameInp.value.toLowerCase();
 
-    tasks: [
-      {
-        name: 'Complete Java Assignment',
-        description: 'Finish the exercises in Chapter 5.',
-        date: '2024-10-10T00:00:00',
-        project: 'school',
-      },
-      {
-        name: 'Plan Weekend Hike',
-        description: 'Research trails and gear for the trip.',
-        date: '2024-10-11T00:00:00',
-        project: 'personal',
-      },
-      {
-        name: 'Team Meeting',
-        description: 'Discuss progress on current sprint.',
-        date: '2024-10-12T00:00:00',
-        project: 'work',
-      },
-    ],
-  },
-  {
-    name: 'school',
-    description: 'personal project',
-    tasks: [
-      {
-        name: 'Complete Java Assignment',
-        description: 'Finish the exercises in Chapter 5.',
-        date: '2024-10-10T00:00:00',
-        project: 'school',
-      },
-      {
-        name: 'Plan Weekend Hike',
-        description: 'Research trails and gear for the trip.',
-        date: '2024-10-11T00:00:00',
-        project: 'personal',
-      },
-      {
-        name: 'Team Meeting',
-        description: 'Discuss progress on current sprint.',
-        date: '2024-10-12T00:00:00',
-        project: 'work',
-      },
-    ],
-  },
-  {
-    name: 'work',
-    description: 'personal project',
-    tasks: [
-      {
-        name: 'Complete Java Assignment',
-        description: 'Finish the exercises in Chapter 5.',
-        date: '2024-10-10T00:00:00',
-        project: 'school',
-      },
-      {
-        name: 'Plan Weekend Hike',
-        description: 'Research trails and gear for the trip.',
-        date: '2024-10-11T00:00:00',
-        project: 'personal',
-      },
-      {
-        name: 'Team Meeting',
-        description: 'Discuss progress on current sprint.',
-        date: '2024-10-12T00:00:00',
-        project: 'work',
-      },
-    ],
-  },
-];
+  modalView.closeModal();
+  if (name.toLowerCase() === 'inbox' || projects.find((p) => p === name)) return;
+
+  projects.push(name);
+  projectSideView._clear();
+  projectSideView.updateMarkup();
+};
+
+const updateStorage = () => {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+};
+
+const setDefault = () => {
+  tasks = [
+    {
+      id: 0,
+      name: 'Practice Spring Boot',
+      description: 'It should take you 2 hours.',
+      date: '2024-10-09T00:00:00',
+      priority: 1,
+      project: 'inbox',
+    },
+    {
+      id: 1,
+      name: 'Complete Java Assignment',
+      description: 'Finish the exercises in Chapter 5.',
+      date: '2024-10-10T00:00:00',
+      priority: 3,
+      project: 'school',
+    },
+    {
+      id: 2,
+      name: 'Plan Weekend Hike',
+      description: 'Research trails and gear for the trip.',
+      date: '2024-10-11T00:00:00',
+      priority: 2,
+      project: 'personal',
+    },
+    {
+      id: 3,
+      name: 'Team Meeting',
+      description: 'Discuss progress on current goal.',
+      date: '2024-10-12T00:00:00',
+      priority: 0,
+      project: 'work',
+    },
+    {
+      id: 4,
+      name: 'Buy Groceries',
+      description: 'Prepare list for the weekend shopping.',
+      date: '2024-10-13T00:00:00',
+      priority: 0,
+      project: 'personal',
+    },
+    {
+      id: 5,
+      name: 'Buy whatever',
+      description: 'A miscellaneous task.',
+      date: new Date().toISOString(),
+      priority: 0,
+      project: 'inbox',
+    },
+  ];
+};

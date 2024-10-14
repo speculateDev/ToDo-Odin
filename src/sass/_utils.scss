@@ -65,7 +65,7 @@ button:disabled {
 }
 
 #icon-delete {
-  fill: $color-secondary-3;
+  fill: #aaa;
   opacity: 0.3;
   height: 1.5rem;
   width: 1.5rem;
@@ -75,6 +75,23 @@ button:disabled {
   &:hover {
     transform: scale(1.1);
     opacity: 1;
+    fill: $color-secondary-3;
+  }
+}
+
+#add-project-icon {
+  height: 3rem;
+  width: 3rem;
+  fill: #aaa;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    fill: $color-secondary-1;
+  }
+
+  &:active {
+    transform: scale(1.2);
   }
 }
 

@@ -96,7 +96,11 @@
 //////////////////////////////////////////////////////////
 .projects {
   &__title {
+    padding-left: 0.5rem;
+    display: flex;
+    align-items: center;
     margin-bottom: 1.6rem;
+    justify-content: space-between;
   }
 
   &__list {

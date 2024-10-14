@@ -1,5 +1,5 @@
 export default class View {
-  _clear(el) {
+  _clear(el = this._parentEl) {
     el.innerHTML = '';
   }
 

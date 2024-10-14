@@ -1,6 +1,5 @@
 import View from './view';
-import { projects, updateData } from './model';
-import { addTask } from './model';
+import { addTask, projects, addProject } from './model';
 
 class ModalView extends View {
   _modalEl = document.querySelector('.modal');
@@ -29,8 +28,17 @@ class ModalView extends View {
     const addBtn = this._modalEl.querySelector('.btn__add');
 
     cancelBtn.addEventListener('click', this.closeModal.bind(this));
-    nameInput.addEventListener('input', this._trackInput.bind(this, nameInput, addBtn));
-    this._modalFormEl.addEventListener('submit', addTask.bind(this, this._modalFormEl));
+    nameInput.addEventListener('input', this.trackInput.bind(this, nameInput, addBtn));
+
+    if (type !== 'task') {
+      this._modalFormEl.addEventListener('submit', addProject.bind(null, nameInput), {
+        once: true,
+      });
+      return;
+    }
+    this._modalFormEl.addEventListener('submit', addTask.bind(this, this._modalFormEl), {
+      once: true,
+    });
   }
 
   projectMarkup() {
@@ -42,13 +50,6 @@ class ModalView extends View {
           class="tasks__input mb-sm"
           placeholder="Project name"
           required
-        />
-        <input
-          type="text"
-          name="description"
-          id="description"
-          class="tasks__input"
-          placeholder="Description"
         />
 
         <div class="tasks__btns-box">
@@ -107,9 +108,9 @@ class ModalView extends View {
   generateProjects(task) {
     return projects
       .map((project) => {
-        return `<option ${task && task.project === project.name ? 'selected' : ''} value="${
-          project.name
-        }">${project.name}</option>`;
+        return `<option ${
+          task && task.project === project ? 'selected' : ''
+        } value="${project}">${project}</option>`;
       })
       .join('');
   }
@@ -118,7 +119,7 @@ class ModalView extends View {
     this._modalEl.classList.remove('active');
   }
 
-  _trackInput(input, btn) {
+  trackInput(input, btn) {
     if (input.validity.valueMissing) {
       btn.disabled = true;
     } else btn.disabled = false;
