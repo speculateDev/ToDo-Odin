@@ -1,0 +1,164 @@
+.toggle {
+  &-box {
+    cursor: pointer;
+    position: relative;
+    text-align: end;
+  }
+
+  &__icon {
+    margin-left: auto;
+    height: 3.2rem;
+    width: 3.2rem;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+
+    svg {
+      height: 2rem;
+      width: 2rem;
+      fill: #fff;
+    }
+
+    &:hover {
+      background-color: $color-primary-4;
+    }
+
+    &:active svg {
+      transform: scale(0.95);
+    }
+  }
+}
+
+.sidebar {
+  overflow: hidden;
+  border-right: 1px solid #444;
+  background-color: $color-primary-3;
+  flex: 0 0 18%;
+  padding: 2rem 1rem;
+  transition: all 0.1s;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.1s ease;
+
+    &:hover {
+      background-color: $color-primary-5;
+    }
+  }
+
+  &.toggle {
+    flex: 0 0 0;
+    width: 0;
+    padding: 0;
+
+    .toggle__icon {
+      position: fixed;
+      top: 1rem;
+      left: 0.5rem;
+    }
+  }
+
+  &__item-active,
+  &__item-active:hover {
+    background-color: rgba($color: $color-secondary-1, $alpha: 0.2);
+  }
+
+  &__item-active &__icon {
+    fill: $color-secondary-1;
+  }
+
+  &__item-active &__name {
+    color: $color-secondary-1;
+  }
+
+  &__icon {
+    height: 2.2rem;
+    width: 2.2rem;
+    fill: #fff;
+  }
+
+  &__name {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+.projects {
+  &__title {
+    margin-bottom: 1.6rem;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0.5rem;
+    transition: all 0.1s ease;
+
+    &:hover {
+      background-color: $color-primary-5;
+    }
+  }
+
+  &__name {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: #fff;
+  }
+
+  &__item-add {
+    margin-top: 2rem;
+  }
+
+  &__name-add {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  &__icon-add {
+    height: 2.5rem;
+    width: 2.5rem;
+    fill: #fff;
+  }
+}
+
+#icon-add {
+  height: 3rem;
+  width: 3rem;
+  fill: $color-secondary-1;
+}
+
+#sidebar-item-add {
+  color: $color-secondary-1;
+  transition: all 0.2s;
+
+  .sidebar__name {
+    font-weight: 800;
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}

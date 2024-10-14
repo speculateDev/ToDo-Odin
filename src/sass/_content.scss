@@ -1,0 +1,236 @@
+.tasks {
+  padding: 4rem 8rem;
+  background-color: $color-primary-4;
+  flex: 1;
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    font-size: 1.3rem;
+    color: #aaa;
+    font-weight: 300;
+    text-transform: lowercase;
+    fill: #aaa;
+
+    svg {
+      height: 1.2rem;
+      width: 1.2rem;
+    }
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    position: relative;
+    display: grid;
+    column-gap: 1rem;
+    grid-template-columns: min-content auto;
+    padding: 2rem 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba($color: $color-primary-3, $alpha: 0.5);
+    }
+  }
+
+  &__priority {
+    margin-top: 3px;
+    grid-row: 1 / span 2;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 10rem;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+
+    &-0 {
+      border: 2px solid $color-primary-3;
+      fill: $color-primary-3;
+      background: rgba($color: $color-primary-3, $alpha: 0.2);
+    }
+
+    &-1 {
+      border: 2px solid $color-secondary-3;
+      fill: $color-secondary-3;
+      background: rgba($color: $color-secondary-3, $alpha: 0.2);
+    }
+
+    &-2 {
+      border: 2px solid $color-secondary-1;
+      fill: $color-secondary-1;
+      background: rgba($color: $color-secondary-1, $alpha: 0.2);
+    }
+
+    &-3 {
+      border: 2px solid $color-secondary-4;
+      fill: $color-secondary-1;
+      background: rgba($color: $color-secondary-4, $alpha: 0.2);
+    }
+  }
+
+  &__priority-icon {
+    fill: none;
+    filter: brightness(1.4);
+    height: 2rem;
+    width: 2rem;
+  }
+
+  &__priority-0:hover &__priority-icon {
+    fill: #555;
+  }
+  &__priority-1:hover &__priority-icon {
+    fill: $color-secondary-3;
+  }
+  &__priority-2:hover &__priority-icon {
+    fill: $color-secondary-1;
+  }
+  &__priority-3:hover &__priority-icon {
+    fill: $color-secondary-4;
+  }
+
+  &__name {
+    font-size: 1.9rem;
+    font-weight: 700;
+  }
+
+  &__due-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__date,
+  &__project-name {
+    font-size: 1.2rem;
+    color: #aaa;
+  }
+
+  &__icon {
+    fill: #aaa;
+    height: 1.4rem;
+    width: 1.4rem;
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    color: #aaa;
+  }
+
+  &__data {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__project {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__inputs-box {
+    border: 1px solid rgba($color: #aaa, $alpha: 0.2);
+    grid-column: 1 / -1;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+  }
+
+  &__input {
+    outline: none;
+    background: none;
+    border: none;
+    color: #fff;
+
+    &[name='name'] {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+  }
+
+  &__btns-box {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &:last-child {
+      padding-top: 1.8rem;
+      border-top: 1px solid rgba($color: #aaa, $alpha: 0.2);
+    }
+  }
+
+  &__icon-plus-box {
+    border-radius: 10rem;
+    height: 2.2rem;
+    width: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+
+    & + span {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #777;
+      transition: all 0.2s;
+    }
+  }
+
+  &__icon-plus {
+    height: 2rem;
+    width: 2rem;
+    fill: $color-secondary-1;
+    transition: all 0.2s;
+  }
+
+  &__item-add-task {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover .tasks__icon-plus {
+      fill: #fff;
+    }
+
+    &:hover .tasks__icon-plus-box {
+      background-color: rgba($color: $color-secondary-1, $alpha: 0.7);
+    }
+
+    &:hover span {
+      color: $color-secondary-1;
+    }
+  }
+}
+
+input[type='date'] {
+  color-scheme: dark;
+  font-size: 1.4rem;
+  background-color: $color-primary-4;
+  font-family: inherit;
+  border: 1px solid rgba($color: #aaa, $alpha: 0.2);
+  outline: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+select {
+  background-color: $color-primary-4;
+  outline: none;
+  padding: 0.8rem;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 5px;
+  border: 1px solid rgba($color: #aaa, $alpha: 0.2);
+  cursor: pointer;
+}

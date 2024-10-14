@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./img/odin-icon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="./js/script.js"></script>
+    <title>Odin | ToDo</title>
+  </head>
+  <body>
+    <main class="container">
+      <div class="sidebar">
+        <div class="toggle-box mb-md">
+          <div class="toggle__icon">
+            <svg>
+              <use href="./img/icons.svg#icon-layout"></use>
+            </svg>
+          </div>
+        </div>
+
+        <ul class="sidebar__list mb-md">
+          <li id="sidebar-item-add" class="sidebar__item mb-sm">
+            <svg id="icon-add" class="sidebar__icon">
+              <use href="./img/icons.svg#icon-plus"></use>
+            </svg>
+            <span class="sidebar__name">Add task</span>
+          </li>
+
+          <li class="sidebar__item sidebar__item-active" data-name="inbox">
+            <svg class="sidebar__icon">
+              <use href="./img/icons.svg#icon-inbox"></use>
+            </svg>
+            <span class="sidebar__name">Inbox</span>
+          </li>
+
+          <li class="sidebar__item" data-name="today">
+            <svg class="sidebar__icon">
+              <use href="./img/icons.svg#icon-calendar"></use>
+            </svg>
+            <span class="sidebar__name">Today</span>
+          </li>
+
+          <li class="sidebar__item" data-name="overdue">
+            <svg class="sidebar__icon">
+              <use href="./img/icons.svg#icon-clock"></use>
+            </svg>
+            <span class="sidebar__name">Overdue</span>
+          </li>
+        </ul>
+
+        <h2 class="projects__title">Projects</h2>
+        <ul class="projects__list"></ul>
+        <!-- <ul class="projects__list">
+          <li class="projects__item">
+            <svg class="projects__icon">
+              <use href="./img/icons.svg#icon-folder"></use>
+            </svg>
+            <span class="projects__name">Project 1</span>
+
+            <svg class="projects__icon ml-auto">
+              <use href="./img/icons.svg#icon-delete"></use>
+            </svg>
+          </li>
+          <li class="projects__item">
+            <svg class="projects__icon">
+              <use href="./img/icons.svg#icon-folder"></use>
+            </svg>
+            <span class="projects__name">Project 2</span>
+          </li>
+          <li class="projects__item">
+            <svg class="projects__icon">
+              <use href="./img/icons.svg#icon-folder"></use>
+            </svg>
+            <span class="projects__name">Project 3</span>
+          </li>
+
+          <li class="projects__item projects__item-add">
+            <svg class="projects__icon-add">
+              <use href="./img/icons.svg#icon-folderPlus"></use>
+            </svg>
+            <span class="projects__name-add">Create a new project</span>
+          </li>
+        </ul> -->
+      </div>
+
+      <div class="tasks">
+        <!-- <ul class="tasks__list">
+          <li class="tasks__item" data-index="0">
+            <button class="btn__edit">
+              <svg>
+                <use href="./img/icons.svg#icon-edit"></use>
+              </svg>
+            </button>
+            <button class="tasks__priority tasks__priority-1">
+              <svg class="tasks__priority-icon">
+                <use href="./img/icons.svg#icon-check"></use>
+              </svg>
+            </button>
+
+            <h3 class="tasks__name">Practice Js</h3>
+            <div>
+              <p class="tasks__description">Remote?</p>
+              <div class="tasks__due-date">
+                <svg class="tasks__icon">
+                  <use href="./img/icons.svg#icon-calendar"></use>
+                </svg>
+                <span class="tasks__date">Sat, Oct 5</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="tasks__item">
+            <form class="tasks__inputs-box">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="tasks__input mb-sm"
+                placeholder="Task name"
+                required
+              />
+              <input
+                type="text"
+                name="description"
+                id="description"
+                class="tasks__input"
+                placeholder="Description"
+              />
+              <div class="tasks__btns-box">
+                <input type="date" name="date" id="date" value="2024-10-10" />
+                <select name="priority" id="priority">
+                  <option value="no priority">No priority</option>
+                  <option value="1">Priority 1</option>
+                  <option value="2">Priority 2</option>
+                  <option value="3">Priority 3</option>
+                </select>
+              </div>
+              <div class="tasks__btns-box">
+                <select name="project" id="projects">
+                  <option value="Inbox">Inbox</option>
+                  <option value="Project 1">Project 1</option>
+                  <option value="Project 2">Project 2</option>
+                </select>
+                <div class="tasks__btns ml-auto">
+                  <button type="button" class="btn btn__cancel">Cancel</button>
+                  <button type="submit" class="btn btn__add">Save</button>
+                </div>
+              </div>
+            </form>
+          </li>
+
+          <li class="tasks__item" data-index="1">
+            <button class="tasks__priority tasks__priority-2">
+              <svg class="tasks__priority-icon">
+                <use href="./img/icons.svg#icon-check"></use>
+              </svg>
+            </button>
+
+            <h3 class="tasks__name">Create a markup</h3>
+            <div class="tasks__data">
+              <div class="tasks__due-date">
+                <svg class="tasks__icon">
+                  <use href="./img/icons.svg#icon-calendar"></use>
+                </svg>
+                <span class="tasks__date">yesterday</span>
+              </div>
+
+              <div class="tasks__project">
+                <svg class="tasks__icon">
+                  <use href="./img/icons.svg#icon-folder"></use>
+                </svg>
+                <span class="tasks__project-name">Website</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="tasks__item" data-index="2">
+            <button class="tasks__priority tasks__priority-3">
+              <svg class="tasks__priority-icon">
+                <use href="./img/icons.svg#icon-check"></use>
+              </svg>
+            </button>
+
+            <h3 class="tasks__name">Create a markup</h3>
+            <div>
+              <div class="tasks__data">
+                <div class="tasks__due-date">
+                  <svg class="tasks__icon">
+                    <use href="./img/icons.svg#icon-calendar"></use>
+                  </svg>
+                  <span class="tasks__date">yesterday</span>
+                </div>
+                <div class="tasks__project">
+                  <svg class="tasks__icon">
+                    <use href="./img/icons.svg#icon-folder"></use>
+                  </svg>
+                  <span class="tasks__project-name">Website</span>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="tasks__item" data-index="3">
+            <form class="tasks__inputs-box">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="tasks__input mb-sm"
+                placeholder="Task name"
+                required
+              />
+              <input
+                type="text"
+                name="description"
+                id="description"
+                class="tasks__input"
+                placeholder="Description"
+              />
+              <div class="tasks__btns-box">
+                <input type="date" name="date" id="date" value="2024-10-10" />
+                <select name="priority" id="priority">
+                  <option value="no priority">No priority</option>
+                  <option value="1">Priority 1</option>
+                  <option value="2">Priority 2</option>
+                  <option value="3">Priority 3</option>
+                </select>
+              </div>
+
+              <div class="tasks__btns-box">
+                <select name="project" id="projects">
+                  <option value="Inbox">Inbox</option>
+                  <option value="Project 1">Project 1</option>
+                  <option value="Project 2">Project 2</option>
+                </select>
+
+                <div class="tasks__btns ml-auto">
+                  <button type="button" class="btn btn__cancel">Cancel</button>
+                  <button type="submit" class="btn btn__add" disabled>Add task</button>
+                </div>
+              </div>
+            </form>
+          </li>
+
+          <li class="tasks__item tasks__item-add-task">
+            <div class="tasks__icon-plus-box">
+              <svg class="tasks__icon-plus">
+                <use href="./img/icons.svg#icon-plus+"></use>
+              </svg>
+            </div>
+
+            <span>Add task</span>
+          </li>
+        </ul> -->
+
+        <ul class="tasks__list"></ul>
+      </div>
+    </main>
+
+    <div class="modal">
+      <div class="modal__overlay"></div>
+
+      <form class="modal__content"></form>
+      <!-- <form class="modal__content">
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="tasks__input mb-sm"
+          placeholder="Task name"
+          required
+        />
+        <input
+          type="text"
+          name="description"
+          id="description"
+          class="tasks__input"
+          placeholder="Description"
+        />
+        <div class="tasks__btns-box">
+          <input type="date" name="date" id="date" value="2024-10-10" />
+          <select name="priority" id="priority">
+            <option value="no priority">No priority</option>
+            <option value="1">Priority 1</option>
+            <option value="2">Priority 2</option>
+            <option value="3">Priority 3</option>
+          </select>
+        </div>
+
+        <div class="tasks__btns-box">
+          <select name="project" id="projects">
+            <option value="Inbox">Inbox</option>
+            <option value="Project 1">Project 1</option>
+            <option value="Project 2">Project 2</option>
+          </select>
+
+          <div class="tasks__btns ml-auto">
+            <button type="button" class="btn btn__cancel">Cancel</button>
+            <button type="submit" class="btn btn__add" disabled>Add task</button>
+          </div>
+        </div>
+      </form> -->
+
+      <!-- <form class="modal__content">
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="tasks__input mb-sm"
+          placeholder="Project name"
+          required
+        />
+        <input
+          type="text"
+          name="description"
+          id="description"
+          class="tasks__input"
+          placeholder="Description"
+        />
+
+        <div class="tasks__btns-box">
+          <div class="tasks__btns ml-auto">
+            <button type="button" class="btn btn__cancel">Cancel</button>
+            <button type="submit" class="btn btn__add" disabled>Add Project</button>
+          </div>
+        </div>
+      </form> -->
+    </div>
+  </body>
+</html>

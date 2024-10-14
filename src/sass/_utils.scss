@@ -1,0 +1,129 @@
+.mb-sm {
+  margin-bottom: 1rem;
+}
+
+.mb-md {
+  margin-bottom: 3rem;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.btn {
+  padding: 0.7rem 1.2rem;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+
+  &__add {
+    background-color: $color-secondary-1;
+    margin-left: 0.7rem;
+  }
+
+  &__cancel {
+    background-color: $color-primary-3;
+  }
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.2);
+  }
+
+  &__edit {
+    position: absolute;
+    border: none;
+    background: none;
+    right: 3rem;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+    outline: none;
+
+    svg {
+      fill: rgba($color: #aaa, $alpha: 0.8);
+      opacity: 0.3;
+      height: 2rem;
+      width: 2rem;
+      transition: all 0.2s ease;
+    }
+
+    &:hover svg {
+      opacity: 1;
+    }
+
+    &:active svg {
+      transform: scale(0.9);
+    }
+  }
+}
+
+button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+#icon-delete {
+  fill: $color-secondary-3;
+  opacity: 0.3;
+  height: 1.5rem;
+  width: 1.5rem;
+
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
+
+.modal {
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+
+  &__content {
+    min-width: 40%;
+    border: 1px solid rgba($color: #aaa, $alpha: 0.6);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: $color-primary-4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    z-index: 2;
+    transition: all 0.6s ease;
+  }
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+
+    .modal__content {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,40 @@
+$color-primary-4: #182123;
+$color-primary-3: #343d3f;
+$color-primary-5: #262626;
+
+$color-secondary-1: #316dca;
+$color-secondary-2: #477fd2;
+$color-secondary-3: #c74746;
+$color-secondary-4: #a66917;
+
+// #316dca #477fd2 #a66917 #c74746
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  min-height: 100vh;
+  color: #fff;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+:root {
+  color-scheme: dark;
+}
