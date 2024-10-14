@@ -49,6 +49,7 @@ class ProjectsSideView extends View {
 
       // Update projects arr
       model.projects.splice(index, 1);
+      model.updateStorage('project');
 
       // Update Markup
       this._clear(this._parentEl);
@@ -63,6 +64,7 @@ class ProjectsSideView extends View {
       return;
     }
 
+    if (!itemEl) return;
     contentView.state.title = itemEl.dataset.project;
     contentView.render();
   }

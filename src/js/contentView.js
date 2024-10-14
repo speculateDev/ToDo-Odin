@@ -150,6 +150,7 @@ class ContentView extends View {
       // Remove el from internal data
       const index = model.tasks.findIndex((t) => t.id === id);
       model.tasks.splice(index, 1);
+      model.updateStorage();
 
       // Update Markup
       this.render();

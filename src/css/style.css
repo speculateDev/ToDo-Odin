@@ -54,6 +54,7 @@ body {
   background-color: #343d3f;
   flex: 0 0 18%;
   padding: 2rem 1rem;
+  position: relative;
   transition: all 0.1s; }
   .sidebar__item {
     display: flex;
@@ -210,6 +211,18 @@ button:disabled {
     fill: #316dca; }
   #add-project-icon:active {
     transform: scale(1.2); }
+
+.reset__icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  fill: rgba(170, 170, 170, 0.2);
+  cursor: pointer;
+  transition: all 0.2s; }
+  .reset__icon:hover {
+    fill: crimson; }
 
 .modal {
   height: 100%;

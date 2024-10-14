@@ -3,8 +3,7 @@ import modalView from './modalView';
 import ModalView from './modalView';
 import { projectSideView } from './sidebarView';
 
-export let projects;
-
+export let projects = ['school', 'personal', 'work'];
 export let tasks = [
   {
     id: 0,
@@ -55,12 +54,6 @@ export let tasks = [
     project: 'inbox',
   },
 ];
-
-export const updateProjects = () => {
-  projects = [
-    ...new Set(tasks.filter((task) => task.project !== 'inbox').map((task) => task.project)),
-  ];
-};
 
 const generateId = function () {
   for (let id = 0; id <= tasks.length + 1; id++) {
@@ -140,12 +133,13 @@ export const addTask = function (formEl, e) {
   if (!exist) tasks.push(task);
   if (formEl.classList.contains('modal__content')) ModalView.closeModal();
 
-  updateProjects();
   contentView.render();
+  updateStorage();
 };
 
 export const updateTasks = (index) => {
   tasks = tasks.filter((task) => task.project !== projects[index]);
+  updateStorage();
 };
 
 export const addProject = (nameInp, e) => {
@@ -158,9 +152,22 @@ export const addProject = (nameInp, e) => {
   projects.push(name);
   projectSideView._clear();
   projectSideView.updateMarkup();
+  updateStorage('project');
 };
 
-const updateStorage = () => {
+export const useStorage = (data, type) => {
+  if (type === 'tasks') {
+    tasks = data;
+    return;
+  }
+  projects = data;
+};
+
+export const updateStorage = (type = undefined) => {
+  if (type === 'project') {
+    localStorage.setItem('projects', JSON.stringify(projects));
+    return;
+  }
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 

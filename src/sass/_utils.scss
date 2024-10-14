@@ -95,6 +95,21 @@ button:disabled {
   }
 }
 
+.reset__icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  fill: rgba($color: #aaa, $alpha: 0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    fill: crimson;
+  }
+}
+
 ///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////
 
